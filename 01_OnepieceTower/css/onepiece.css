@@ -1,0 +1,20 @@
+body { margin: 0; font-size: 0.85em; font-weight: bold; font-family: 'Lucida Grande', 'Hiragino Kaku Gothic ProN', 'ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ ProN W3', Meiryo, ãƒ¡ã‚¤ãƒªã‚ª, sans-serif; }
+img { display: block; width: 100%; }
+h2 { text-align: center; }
+
+table { border-collapse: collapse; width: 100%; }
+table, th, td { border: 1px #bbbbbb solid; }
+th, td { padding: 15px; }
+th { background-color: #5CB6E7; }
+
+html,
+body,
+.page { height: 100%; }
+
+.info-body { background-image: url(../img/bg_dot.jpg); width: 50%; height: auto; position: absolute; right: 0; min-width: 580px; }
+.info-body > div { padding: 50px 70px 15px; }
+.img-item { margin-bottom: 2em; }
+.img-title:hover { opacity: 0.7; }
+.poster { background-color: #5CB6E7; width: 50%; position: fixed; left: 0; top: 0; bottom: 0; overflow: hidden; }
+.poster > a > img { display: block; margin: 0 auto; width: auto; }
+.memo { font-size: 0.7em; }

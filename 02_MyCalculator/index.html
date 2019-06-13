@@ -4,12 +4,121 @@
 <head>
     <meta charset="UTF-8">
     <title>My Calculator</title>
+    <style>
+        html, body { background-color: #4c4c4c; margin: 0; }
+
+        #warning_text { color: #e23030; visibility: hidden; }
+        #warning_text.show { visibility: visible; }
+
+        .main { display: block; width: fit-content; margin: 125px auto 0; }
+        .calculator { border: 3px #ddd solid; }
+
+        .calculator .form { border: 1px #ddd solid; height: 48px; width: 100%; }
+        .calculator .form .count { font-size: 18px; border: none; box-sizing: border-box; width: 100%; height: 100%; padding: 0 15px; }
+
+        .calculator .btn-group .btn { background-color: #fff; font-size: 16px; border: 1px #ddd solid; width: 64px; height: 64px; line-height: 64px; }
+        .calculator .btn-group .btn:hover { color: #fff; background-color: #4c4c4c; cursor: pointer; }
+        .calculator .btn-group .btn:last-child { color: #fff; background-color: #ffa05c; border-color: #ffa05c; border-top-color: #ddd; }
+        .calculator .btn-group .btn:last-child:hover { background-color: #da6512; }
+        .calculator .btn-group .btn.equal { color: #fff; background-color: #43d692; border-color: #43d692; }
+        .calculator .btn-group .btn.equal:hover { background-color: #0c9b58; }
+
+        .calculator .form .count,
+        .calculator .btn-group .btn:focus { outline: none; }
+    </style>
 </head>
 
 <body>
 
-   <p><a href="https://www.desmos.com/scientific" target="_blank">參考網路上面的計算機</a></p>
-    
+   <!-- <p><a href="https://www.desmos.com/scientific" target="_blank">參考網路上面的計算機</a></p> -->
+   <div class="main">
+        <p id="warning_text">格式不符</p>
+        <div id="calculator" class="calculator">
+            <div class="form">
+                <input id="count" type="text" class="count" name="count">
+            </div>
+            <!-- 元素範例
+            <div class="btn-group">
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn">+</button>
+            </div> -->
+        </div>
+    </div>
+
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+    // 創建計算機按鈕
+    const creatCalculator = () => {
+        // 設定計算機按鈕 (須為正方形，如4x4)
+        const calculatorBtns = [
+            [1, 2, 3, '+'],
+            [4, 5, 6, '-'],
+            [7, 8, 9, '*'],
+            [0, '.', '=', '÷'],
+        ];
+
+        // 將計算機按鈕轉換成HTML元素
+        let calculatorBtnEl = '';
+        calculatorBtns.forEach((thisLine, lineIndex) => {
+            let btnEl = '';
+            thisLine.forEach((btn, btnIndex) => {
+                // 單顆按鈕 EX: [1]
+                const equal = (btn == '=') ? ' equal' : '';
+                const thisBtnEl = `<button class="btn${equal}" data-value="${btn}" onclick="keyCount(this)">${btn}</button>`;
+                btnEl = `${btnEl}${thisBtnEl}`;
+            });
+
+            // 每行的按鈕群 EX: [1, 2, 3, '+']
+            const btnGroupEl = `<div class="btn-group">${btnEl}</div>`;
+            calculatorBtnEl = `${calculatorBtnEl}${btnGroupEl}`;
+        });
+
+        // 新增至HTML內
+        $('#calculator').append(calculatorBtnEl);
+    };
+
+    // 檢查計算式格式
+    const checkCount = (count) => {
+        const ref = /^[0-9\.\+\-\÷\*]*$/;
+        return ref.test(count);
+    };
+
+    // 計算機按鈕觸法處理
+    const keyCount = (e) => {
+        $('#count').focus();
+        $('#warning_text').removeClass('show');
+        // 取按鈕值 EX: 1, 2, 3, +, =
+        const val = $(e).attr('data-value');
+        const count = $('#count').val();
+
+        // '='鍵執行計算，其他則添加至計算式
+        if (val === '=') {
+            doCount(count);
+        } else {
+            // 檢查格式
+            if (checkCount(val)) {
+                $('#count').val(count + val);
+            }
+        }
+    };
+
+    // 計算
+    const doCount = (count) => {
+        // 檢查格式
+        if (checkCount(count)) {
+            count = count.replace('÷', '/'); 
+            const result = eval(count);
+            $('#count').val(result);
+        } else {
+            $('#warning_text').addClass('show');
+        }
+    };
+
+    creatCalculator(); // 創建計算機按鈕
+</script>
 
 </html>

@@ -30,8 +30,19 @@ const creatCalculator = () => {
 
 // 檢查計算式格式
 const checkCount = (count) => {
-    const ref = /^[0-9\.\+\-\÷\*]*$/;
-    return ref.test(count);
+    const countRef = /^[0-9\-][0-9\.\+\-\÷\*]*$/;
+    const checkCount = countRef.test(count);
+    return checkCount && checkLastCount(count);
+};
+
+// 檢查符號重複
+const checkLastCount = (count) => {
+    const lastCount = count.substr(count.length - 2, 2).split('');
+    let check = true;
+    if (!/^[0-9]$/.test(lastCount[0]) && count.length >= 2) {
+        check = /^[0-9]$/.test(lastCount[1]);
+    }
+    return check;
 };
 
 // 計算機按鈕觸法處理
@@ -47,7 +58,7 @@ const keyCount = (e) => {
         doCount(count);
     } else {
         // 檢查格式
-        if (checkCount(val)) {
+        if (checkCount(count + val)) {
             $('#count').val(count + val);
         }
     }

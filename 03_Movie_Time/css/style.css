@@ -1,0 +1,15 @@
+html, body { background-color: #000; margin: 0; }
+
+/* 嵌入YT影片 */
+.top-video { position: relative; padding-bottom: 56.25%; /* 16:9 */ padding-top: 25px; height: 0; margin-top: -9%; }
+.top-video .video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* 主架構及查詢Box */
+.main { display: block; box-sizing: border-box; width: 100%; max-width: 720px; padding: 0 45px 45px; margin: 45px auto 0; }
+.ticket-box { color: #fff; background-color: #541a11; box-sizing: border-box; width: 100%; border-radius: 4px; padding: 20px 45px; }
+
+/* 查詢下拉選項 */
+.ticket-box .search-group .search-item { display: flex; margin-bottom: 15px; }
+.ticket-box .search-group .search-item:last-child { margin-bottom: 0; }
+.ticket-box .search-group .search-item > label { line-height: 27px; flex: 1; }
+.ticket-box .search-group .search-item > .form-control { border: 1px #ddd solid; border-radius: 4px; flex: 5; padding: 4px 9px; }

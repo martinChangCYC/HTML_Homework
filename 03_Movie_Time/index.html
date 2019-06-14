@@ -4,11 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Movie Times</title>
+    <!-- icon插件 (font-awesome) -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <!-- 全省威秀影城隔週電影新場次公布於每週二晚間23:59(假設週二整天只能查到：週二 週三 週四) -->
-    <!-- 會開放未來一週(週三會查到：今天到下星期四)之場次 -->
+    <!-- 置頂YT影片 -->
+    <div class="top-video">
+        <div id="video" class="video"></div>
+    </div>
+
+    <div class="main">
+        <!-- 查詢下拉區塊 -->
+        <div class="ticket-box">
+            <div class="search-group">
+
+                <!-- 選擇影城 -->
+                <div class="search-item">
+                    <label for="theater"><i class="fa fa-search"></i></label>
+                    <select class="form-control" id="theater">
+                        <option>選擇影城</option>
+                        <!-- 選項由js產生 -->
+                    </select>
+                </div>
+
+                <!-- 選擇電影 -->
+                <div class="search-item">
+                    <label for="movie"><i class="fa fa-video-camera"></i></label>
+                    <select class="form-control" id="movie">
+                        <option>選擇電影</option>
+                        <!-- 選項由js產生 -->
+                    </select>
+                </div>
+
+                <!-- 選擇日期 -->
+                <div class="search-item">
+                    <label for="date"><i class="fa fa-calendar"></i></label>
+                    <select class="form-control" id="date">
+                        <option>選擇日期</option>
+                        <!-- 選項由js產生 -->
+                    </select>
+                </div>
+
+                <!-- 選擇場次 -->
+                <div class="search-item">
+                    <label for="time"><i class="fa fa-clock-o"></i></label>
+                    <select class="form-control" id="time">
+                        <option>選擇場次</option>
+                        <!-- 選項由js產生 -->
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!-- YT影片插件API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="./js/java_script.js"></script>
 
 </html>

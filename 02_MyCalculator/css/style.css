@@ -1,0 +1,26 @@
+html, body { background-color: #4c4c4c; margin: 0; }
+
+/* 錯誤提示 */
+#warning_text { color: #e23030; visibility: hidden; }
+#warning_text.show { visibility: visible; }
+
+/* 主架構及計算機 */
+.main { display: block; width: fit-content; margin: 125px auto 0; }
+.calculator { border: 3px #ddd solid; }
+
+/* 計算機 - 計算式 */
+.calculator .form { border: 1px #ddd solid; height: 48px; width: 100%; }
+.calculator .form .count { font-size: 18px; border: none; box-sizing: border-box; width: 100%; height: 100%; padding: 0 15px; }
+
+/* 計算機 - 按鈕 */
+.calculator .btn-group .btn { background-color: #fff; font-size: 16px; border: 1px #ddd solid; width: 64px; height: 64px; line-height: 64px; }
+.calculator .btn-group .btn:hover { color: #fff; background-color: #4c4c4c; cursor: pointer; }
+.calculator .btn-group .btn:last-child { color: #fff; background-color: #ffa05c; border-color: #ffa05c; border-top-color: #ddd; }
+.calculator .btn-group .btn:last-child:hover { background-color: #da6512; }
+/* '=' 鍵 */
+.calculator .btn-group .btn.equal { color: #fff; background-color: #43d692; border-color: #43d692; }
+.calculator .btn-group .btn.equal:hover { background-color: #0c9b58; }
+
+/* 計算機 - 共通 */
+.calculator .form .count,
+.calculator .btn-group .btn:focus { outline: none; }
